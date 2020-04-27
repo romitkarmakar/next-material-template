@@ -1,24 +1,18 @@
 import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import {} from "@material-ui/icons";
+import { withStyles } from "@material-ui/core/styles";
 import Navbar from "./navbar";
-import { withStyles, Container } from "@material-ui/core";
 
-const styles = theme => ({
-  content: {
-    padding: theme.spacing(2),
-    marginTop: "64px"
-  },
-  toolbar: theme.mixins.toolbar
-});
-
+const styles = (theme) => ({});
 class Layout extends React.Component {
   render() {
     const { classes } = this.props;
-
     return (
-      <div>
+      <React.Fragment>
         <Navbar />
-        <Container className={classes.content}>{this.props.children}</Container>
-      </div>
+        {this.props.children}
+      </React.Fragment>
     );
   }
 }

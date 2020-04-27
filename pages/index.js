@@ -1,17 +1,45 @@
 import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import {} from "@material-ui/icons";
+import { withStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
-import { withStyles } from "@material-ui/core";
 
-const styles = theme => ({
-  root: {
-    padding: theme.spacing(2)
-  }
+const styles = (theme) => ({
+  "@global": {
+    body: {
+      backgroundColor: "black",
+    },
+  },
+  "@keyframes move": {
+    from: {
+      transform: "translate(-50%, 200%)",
+      opacity: 0,
+    },
+    to: {
+      transform: "translate(-50%, -50%)",
+      opacity: 1,
+    },
+  },
+  hero: {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    color: "red",
+    transform: "translate(-50%, -50%)",
+    animation: "$move 1s ease-in-out",
+  },
 });
+
 class IndexPage extends React.Component {
   render() {
+    const { classes } = this.props;
     return (
       <Layout>
-        <h1>Hello World</h1>
+        <Grid container>
+          <Typography variant="h2" className={classes.hero}>
+            Next Material Template
+          </Typography>
+        </Grid>
       </Layout>
     );
   }
