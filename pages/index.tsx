@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import {} from "@material-ui/icons";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, createStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
 
-const styles = (theme) => ({
+const styles = createStyles(() => ({
   "@global": {
     body: {
       backgroundColor: "black",
@@ -28,9 +28,13 @@ const styles = (theme) => ({
     transform: "translate(-50%, -50%)",
     animation: "$move 1s ease-in-out",
   },
-});
+}));
 
-class IndexPage extends React.Component {
+interface IProps {
+  classes: any;
+}
+
+class IndexPage extends React.Component<IProps, {}> {
   render() {
     const { classes } = this.props;
     return (
