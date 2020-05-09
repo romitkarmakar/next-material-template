@@ -1,8 +1,10 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
-import {} from "@material-ui/icons";
+import { Grid, Typography, Fab } from "@material-ui/core";
 import { withStyles, createStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
+import { Add } from "@material-ui/icons";
+import store from "../lib/reducer";
+import Count from "../components/Count";
 
 const styles = createStyles(() => ({
   "@global": {
@@ -27,6 +29,12 @@ const styles = createStyles(() => ({
     color: "red",
     transform: "translate(-50%, -50%)",
     animation: "$move 1s ease-in-out",
+    textAlign: "center",
+  },
+  fab: {
+    position: "fixed",
+    bottom: "3%",
+    right: "3%",
   },
 }));
 
@@ -40,10 +48,18 @@ class IndexPage extends React.Component<IProps, {}> {
     return (
       <Layout>
         <Grid container>
-          <Typography variant="h2" className={classes.hero}>
-            Next Material Template
-          </Typography>
+          <div className={classes.hero}>
+            <Typography variant="h2">Next Material Template</Typography>
+            <Count />
+          </div>
         </Grid>
+        <Fab
+          color="primary"
+          className={classes.fab}
+          onClick={() => store.dispatch({ type: "INCREASED" })}
+        >
+          <Add />
+        </Fab>
       </Layout>
     );
   }

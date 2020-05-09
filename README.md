@@ -4,3 +4,13 @@
 
 This is a basic project repository for setting up nextjs with material UI. This contains all the neceesary setup and performance optimisation to quickly get onbaoard with your project.
 
+## Installation
+
+- Install all the node packages
+```bash
+yarn
+```
+- Start the development server
+```bash
+yarn dev
+```
