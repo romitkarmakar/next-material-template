@@ -27,7 +27,7 @@ const styles = makeStyles(() => ({
     position: "absolute",
     left: "50%",
     top: "50%",
-    color: "red",
+    color: "white",
     transform: "translate(-50%, -50%)",
     animation: "$move 1s ease-in-out",
     textAlign: "center",
@@ -55,7 +55,7 @@ export default () => {
       <Fab
         color="primary"
         className={classes.fab}
-        onClick={() => dispatch({ type: "CLICKED" })}
+        onClick={() => dispatch({ type: "CLICKED_ASYNC" })}
       >
         <Add />
       </Fab>
