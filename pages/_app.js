@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../components/theme';
 import Router from 'next/router';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import {wrapper} from '../lib/store';
 
 class MyApp extends App {
 	constructor(props) {
@@ -52,4 +53,4 @@ class MyApp extends App {
 	}
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

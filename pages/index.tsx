@@ -1,12 +1,13 @@
 import React from "react";
 import { Grid, Typography, Fab } from "@material-ui/core";
-import { withStyles, createStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
 import { Add } from "@material-ui/icons";
-import store from "../lib/reducer";
 import Count from "../components/Count";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../lib/reducers";
 
-const styles = createStyles(() => ({
+const styles = makeStyles(() => ({
   "@global": {
     body: {
       backgroundColor: "black",
@@ -38,31 +39,26 @@ const styles = createStyles(() => ({
   },
 }));
 
-interface IProps {
-  classes: any;
-}
+export default () => {
+  const classes = styles();
+  const dispatch = useDispatch();
+  const clicked: number = useTypedSelector((state) => state.counter.clicked);
 
-class IndexPage extends React.Component<IProps, {}> {
-  render() {
-    const { classes } = this.props;
-    return (
-      <Layout>
-        <Grid container>
-          <div className={classes.hero}>
-            <Typography variant="h2">Next Material Template</Typography>
-            <Count />
-          </div>
-        </Grid>
-        <Fab
-          color="primary"
-          className={classes.fab}
-          onClick={() => store.dispatch({ type: "INCREASED" })}
-        >
-          <Add />
-        </Fab>
-      </Layout>
-    );
-  }
-}
-
-export default withStyles(styles)(IndexPage);
+  return (
+    <Layout>
+      <Grid container>
+        <div className={classes.hero}>
+          <Typography variant="h2">Next Material Template</Typography>
+          <Count clicked={clicked} />
+        </div>
+      </Grid>
+      <Fab
+        color="primary"
+        className={classes.fab}
+        onClick={() => dispatch({ type: "CLICKED" })}
+      >
+        <Add />
+      </Fab>
+    </Layout>
+  );
+};
